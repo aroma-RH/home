@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Ressources Humaines</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f5f8;
+            color: #333;
+        }
+
+        /* 🌟 Style de la barre de navigation */
+.navbar {
+    background: linear-gradient(135deg, #1e3a8a, #2563eb);
+    padding: 15px 25px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* 🌟 Logo / Titre */
+.navbar .brand {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* 🌟 Liens du menu */
+.navbar a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+}
+
+/* 🌟 Effet Soulignement animé */
+.navbar a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar a:hover {
+    color: #dbeafe;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* 🌟 Menu */
+.navbar .menu {
+    display: flex;
+}
+
+/* 🌟 Style des sous-menus */
+.menu-item {
+    position: relative;
+    margin-left: 20px;
+}
+
+/* 🌟 Animation fluide du sous-menu */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 35%;
+    background: rgba(37, 99, 235, 0.95);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.menu-item:hover .submenu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.submenu a {
+    display: block;
+    padding: 10px 15px;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.submenu a:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* 🌟 Mobile : Menu Hamburger */
+.toggle-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+.stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    flex-wrap: wrap; /* Ensures items wrap on smaller screens */
+}
+/* 🌟 Responsive - Menu Mobile */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    
+    .navbar .menu {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+    }
+
+    .navbar .menu.active {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(30, 58, 138, 0.95);
+        padding: 15px 0;
+        border-radius: 8px;
+    }
+     
+    .menu-item {
+        margin: 10px 0;
+        align-items: center;
+    }
+
+    .toggle-btn {
+        display: block;
+    }
+
+    .stats {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+    
+    .stat-item {
+        width: 100%;
+    }
+
+    .stats > * {
+        width: 100%; /* Make each item take full width */
+        text-align: center; /* Center content */
+        margin-bottom: 15px; /* Add spacing between rows */
+    }
+
+   
+
+}
+
+
+        .content {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+       
+
+        .stat-item h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-table th, .data-table td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .data-table th {
+            background-color: #1e2a47;
+            color: white;
+            font-weight: bold;
+        }
+
+        .data-table td {
+            background-color: #ffffff;
+        }
+
+        .show-more-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #1e2a47;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+        .show-more-btn:hover {
+            background-color: #354b8c;
+        }
+
+        .header-text {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2e3d59;
+            margin-bottom: 20px;
+        }
+        
+
+        .stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    flex-wrap: wrap;  /* Allow items to wrap onto new lines */
+}
+
+.stat-item {
+    background-color: #ffffff;
+    padding: 20px;
+    width: 30%; /* Default width for larger screens */
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;  /* Adding margin between items for better spacing */
+}
+
+/* 🌟 Mobile: Full width for each stat-item */
+@media screen and (max-width: 768px) {
+    .stat-item {
+        width: 100%;  /* Full width on mobile */
+        margin-bottom: 15px;  /* Add spacing between items */
+    }
+
+    .stats {
+        justify-content: center;  /* Center items on mobile */
+    }
+}
+
+    
+        
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="brand"></div>
+        <button class="toggle-btn" onclick="toggleMenu()">☰</button>
+        <div class="menu">
+            <div class="menu-item">
+                <a href="#">Accueil</a>
+            </div>
+            <div class="menu-item">
+                <a href="#">Employés</a>
+                <div class="submenu">
+                    <a href="#">EFFECTIF</a>
+                    <a href="#">POINTAGE</a>
+                </div>
+            </div>
+            <div class="menu-item">
+                <a href="#">Documents</a>
+                <div class="submenu">
+                    <a href="#">Nouveau Embauche</a>
+                    <a href="#">contrats</a>
+                    <a href="#">RIB</a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+        <h1 class="header-text" >Tableau de bord</h1>
+
+        <!-- Statistics -->
+        
+<div class="stats">
+    <div class="stat-item">
+        <h3>Nombre d'employés</h3>
+        <p id="workerCount">0</p>
+    </div>
+    <div class="stat-item">
+        <h3>Manque contrats</h3>
+        
+        <p id="contractCount">0</p>
+        <button>detail</button>
+    </div>
+    <div class="stat-item">
+        <h3>Total des heures de travail</h3>
+        <p id="totalHours">0</p>
+    </div>
+    <div class="stat-item">
+        <h3>Nombre total d'équipes</h3>
+        <p id="totalTeams">0</p>
+    </div>
+    <div class="stat-item">
+        <h3>Recolte</h3>
+        <p id="weeklyHours">0</p>
+    </div>
+    <div class="stat-item">
+        <h3>Hors Recolte</h3>
+        <p id="newEmployees">0</p>
+    </div>
+</div>
+
+
+        
+        <h2>Liste des employés</h2>
+        <table class="data-table" id="workerTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th>EQUIPE</th>
+                    <th>RHHH</th>
+                    
+                </tr>
+            </thead>
+            <tbody id="workerTableBody">
+               
+            </tbody>
+        </table>
+        <button class="show-more-btn" id="showMoreWorkers" onclick="toggleTableVisibility('worker', 'more')">Plus</button>
+        <button class="show-more-btn" id="showLessWorkers" onclick="toggleTableVisibility('worker', 'less')" style="display: none;">Moins</button>
+
+
+        
+        <h2>EFFECTIF</h2>
+        <table class="data-table" id="contractTable">
+            <thead>
+                <tr>
+                    <th>ID du contrat</th>
+                    <th>Nom de l'employé</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    
+                </tr>
+            </thead>
+            <tbody id="contractTableBody">
+                
+            </tbody>
+        </table>
+        <button class="show-more-btn" id="showMoreContracts" onclick="toggleTableVisibility('contract', 'more')">Plus</button>
+        <button class="show-more-btn" id="showLessContracts" onclick="toggleTableVisibility('contract', 'less')" style="display: none;">Moins</button>
+    </div>
+
+    <script>
+        
+        const apiUrl = 'https://script.google.com/macros/s/AKfycbwCvlzPynWx1uAvL56afNzmeUUM10gm12G1DxTKTjbjioBD_Z7-Dp3-qTymdjkpZCsM/exec';
+
+        let workersData = [];
+        let contractsData = [];
+
+        // Fetch workers data
+        function fetchWorkersData() {
+            fetch(`${apiUrl}?action=getWorkersData`)
+                .then(response => response.json())
+                .then(data => {
+                    workersData = data;
+                    updateStats();  
+                    displayData('worker', 10);
+                });
+        }
+
+       
+        function fetchContractsData() {
+            fetch(`${apiUrl}?action=getContractsData`)
+                .then(response => response.json())
+                .then(data => {
+                    contractsData = data;
+                    updateStats();  
+                    displayData('contract', 10); 
+                });
+        }
+
+       
+function updateStats() {
+    const workerCount = workersData.length;
+    const contractCount = contractsData.length;
+
+    
+    const totalHours = workersData.reduce((acc, worker) => acc + (parseFloat(worker[3]) || 0), 0);
+
+    // Récupération des équipes uniques
+    const teams = new Set(workersData.map(worker => worker[2]));
+    const totalTeams = teams.size;
+
+    // Calcul des heures travaillées cette semaine (exemple basé sur 7 derniers jours)
+    const weeklyHours = workersData.reduce((acc, worker) => {
+        const date = new Date(worker[4]); // Supposons que la colonne 4 contient la date
+        const now = new Date();
+        const diffTime = Math.abs(now - date);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        return diffDays <= 7 ? acc + (parseFloat(worker[3]) || 0) : acc;
+    }, 0);
+
+    // Nombre de nouveaux employés ce mois-ci
+    const newEmployees = getCurrentMonthEmployees();
+
+    // Mise à jour du DOM
+    document.getElementById('workerCount').innerText = workerCount;
+    document.getElementById('contractCount').innerText = contractCount;
+    document.getElementById('totalHours').innerText = totalHours;
+    document.getElementById('totalTeams').innerText = totalTeams;
+    document.getElementById('weeklyHours').innerText = weeklyHours;
+    document.getElementById('newEmployees').innerText = newEmployees;
+}
+
+// Fonction pour compter les nouveaux employés de ce mois
+function getCurrentMonthEmployees() {
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+
+    return workersData.filter(worker => {
+        const hireDate = new Date(worker[4]); // Supposons que la colonne 4 contient la date d'embauche
+        return hireDate.getMonth() === currentMonth && hireDate.getFullYear() === currentYear;
+    }).length;
+}
+
+
+        // Display data in the table
+        function displayData(type, limit) {
+    let tableBody;
+    let data;
+
+    // Determine which data array to use based on the type
+    if (type === 'worker') {
+        tableBody = document.getElementById('workerTableBody');
+        data = workersData; // Assuming workersData is an array of worker objects or arrays
+    } else if (type === 'contract') {
+        tableBody = document.getElementById('contractTableBody');
+        data = contractsData; // Assuming contractsData is an array of contract objects or arrays
+    }
+
+    // Clear current table data
+    tableBody.innerHTML = '';
+
+    // Add data up to the specified limit
+    for (let i = 0; i < Math.min(limit, data.length); i++) {
+        const row = tableBody.insertRow();
+        const rowData = data[i];
+
+        // Assuming rowData is an array of values, modify this if the data is an object
+        row.innerHTML = `
+            <td>${rowData[0]}</td> <!-- Worker/Contract Name -->
+            <td>${rowData[1]}</td> <!-- Position/Role -->
+            <td>${rowData[2]}</td> <!-- Department/Status -->
+            <td>${rowData[3]}</td> <!-- Date/Contract Date -->
+            <td>${rowData[4]}</td> <!-- Date/Contract Date -->
+            <td>${rowData[5]}</td> <!-- Date/Contract Date -->
+            <td>${rowData[6]}</td> <!-- Date/Contract Date -->
+        `;
+    }
+}
+
+let currentWorkerLimit = 15; // Start with 5 rows for workers
+let currentContractLimit = 15; // Start with 5 rows for contracts
+
+// Function to show more data based on type
+function toggleTableVisibility(type, action) {
+    let buttonMore, buttonLess;
+    let limit;
+
+    if (type === 'worker') {
+        buttonMore = document.getElementById('showMoreWorkers');
+        buttonLess = document.getElementById('showLessWorkers');
+        limit = action === 'more' ? currentWorkerLimit : currentWorkerLimit - 20; // Increase or decrease limit
+        currentWorkerLimit = action === 'more' ? currentWorkerLimit + 20 : Math.max(5, currentWorkerLimit - 20); // Increment/decrement limit
+    } else if (type === 'contract') {
+        buttonMore = document.getElementById('showMoreContracts');
+        buttonLess = document.getElementById('showLessContracts');
+        limit = action === 'more' ? currentContractLimit : currentContractLimit - 20; // Increase or decrease limit
+        currentContractLimit = action === 'more' ? currentContractLimit + 20 : Math.max(5, currentContractLimit - 20); // Increment/decrement limit
+    }
+
+    // Update the table display based on the current limit
+    displayData(type, limit);
+
+    // Show/hide the buttons as necessary
+    if (action === 'more') {
+        if (type === 'worker' && workersData.length <= currentWorkerLimit) {
+            buttonMore.style.display = 'none'; // Hide "Show More" if all workers are shown
+        }
+        if (type === 'contract' && contractsData.length <= currentContractLimit) {
+            buttonMore.style.display = 'none'; // Hide "Show More" if all contracts are shown
+        }
+        buttonLess.style.display = 'inline-block'; // Ensure "Show Less" is visible
+    } else {
+        if (limit <= 15) {
+            buttonLess.style.display = 'none'; // Hide "Show Less" if we have the minimum limit
+        }
+        buttonMore.style.display = 'inline-block'; // Ensure "Show More" is visible
+    }
+}
+
+// Function to display data based on type and limit
+function displayData(type, limit) {
+    let tableBody;
+    let data;
+
+    if (type === 'worker') {
+        tableBody = document.getElementById('workerTableBody');
+        data = workersData;
+    } else if (type === 'contract') {
+        tableBody = document.getElementById('contractTableBody');
+        data = contractsData;
+    }
+
+    // Clear current table content
+    tableBody.innerHTML = '';
+
+    // Add data up to the specified limit
+    for (let i = 0; i < Math.min(limit, data.length); i++) {
+        const row = tableBody.insertRow();
+        const rowData = data[i];
+
+        // Insert cells into the row
+        row.innerHTML = `
+            <td>${rowData[0]}</td>
+            <td>${rowData[1]}</td>
+            <td>${rowData[2]}</td>
+            <td>${rowData[3]}</td>
+        `;
+    }
+}
+
+
+        
+        window.onload = function() {
+            fetchWorkersData();
+            fetchContractsData();
+        };
+
+        function toggleMenu() {
+            document.querySelector('.menu').classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
