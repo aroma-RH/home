@@ -369,6 +369,7 @@
 
 
 .sub-nav {
+    
     display: none;
     padding-left: 20px;
 }
@@ -377,6 +378,7 @@
     padding-left: 30px;
     font-size: 14px;
     color: #bdc3c7;
+    margin: 5px;
 }
 
 .sub-nav .nav-item:hover {
@@ -460,12 +462,16 @@
                     <span>CONROLE DE PRESENCE</span>
                 </button>
                 <div class="sub-nav" id="customers-subnav">
+                <a href="https://aroma-rh.github.io/POINTAGE-F20/">
                     <button class="nav-item">
                         <span>POINTAGE</span>
                     </button>
+                </a>
+                <a href="https://aroma-rh.github.io/EF20EE/">
                     <button class="nav-item">
                         <span>EFFECTIF</span>
                     </button>
+                </a>
                 </div>
                 <button class="nav-item" id="deals-toggle">
                     <i data-lucide="dollar-sign"></i>
@@ -484,11 +490,15 @@
                 </div>
                 <button class="nav-item">
                     <i data-lucide="calendar"></i>
-                    <span>La base</span>
+                    <span>Calendar</span>
                 </button>
                 <button class="nav-item">
                     <i data-lucide="mail"></i>
-                    <span>contact</span>
+                    <span>Messages</span>
+                </button>
+                <button class="nav-item">
+                    <i data-lucide="bar-chart"></i>
+                    <span>Reports</span>
                 </button>
                 <button class="nav-item">
                     <i data-lucide="settings"></i>
@@ -626,6 +636,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 
     <script>
+document.getElementById('customers-toggle').addEventListener('click', function() {
+            const subNav = document.getElementById('customers-subnav');
+            subNav.style.display = subNav.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.getElementById('deals-toggle').addEventListener('click', function() {
+            const subNav = document.getElementById('deals-subnav');
+            subNav.style.display = subNav.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                if (this !== document.getElementById('customers-toggle') && document.getElementById('customers-subnav').style.display === 'block') {
+                    document.getElementById('customers-subnav').style.display = 'none';
+                }
+                if (this !== document.getElementById('deals-toggle') && document.getElementById('deals-subnav').style.display === 'block') {
+                    document.getElementById('deals-subnav').style.display = 'none';
+                }
+            });
+        });
+
+
 
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
