@@ -444,6 +444,21 @@
         #download-btn1 i {
             font-size: 24px;
         }
+
+        .table-container table th {
+  background-color: #004d40; /* لون أخضر غامق */
+  color: white;
+}
+
+.table-container table td {
+  background-color: #e0f2f1; /* لون أخضر فاتح */
+  color: #000;
+}
+
+.table-container table tr:nth-child(even) {
+  background-color: #f5f5f5; /* لون رمادي فاتح لتسهيل القراءة */
+}
+
     </style>
 </head>
 <body>
@@ -841,7 +856,7 @@ function displayData1(data) {
     tableBody.innerHTML = ''; 
     let uniquetache = new Set();
     
-    const filteredData = data.slice(1).filter(row => row[1] === 'FINCA 20');  
+    const filteredData = data.slice(1).filter(row => row[2] === 'FINCA 20');  
 
     filteredData.forEach(row => {
         if (row.some(cell => cell && typeof cell === 'string' && cell.trim() !== "")) {
@@ -849,7 +864,7 @@ function displayData1(data) {
             row.forEach((cell, index) => {
                 let td = document.createElement('td');
 
-                if (index === 2 && cell) {
+                if (index === 0 && cell) {
                     td.textContent = formatDate(cell); 
                 } else {
                     td.textContent = cell || '-'; 
