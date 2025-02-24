@@ -135,8 +135,8 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1rem;
+            gap: 0.25rem;
+            margin-bottom: 0.25rem;
         }
 
         .stats-card {
@@ -589,17 +589,19 @@
                     <div class="stats-card">
                         <div class="stats-header">
                             <span class="stats-title">Marquer la présence</span>
+                            <div class="stats-percentage" id="missingContractPercentage">0%</div>
                         </div>
                         <div class="stats-value" id="missingContract">0</div>
-                        <div class="stats-percentage" id="missingContractPercentage">0%</div>
+                        
                     </div>
                     
                     <div class="stats-card">
                         <div class="stats-header">
                             <span class="stats-title">Manque de Contrat</span>
+                            <div class="stats-percentage" id="nonContractPercentage">0%</div>
                         </div>
                         <div class="stats-value" id="nonEmptyColumn7">0</div>
-                        <div class="stats-percentage" id="nonContractPercentage">0%</div>
+                        
                     </div>
                     
                 
