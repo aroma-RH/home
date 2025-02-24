@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>AROMA RH</title>
-    
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         
@@ -125,7 +124,7 @@
         }
 
         .page-title {
-            font-size: 2rem;
+            font-size: 1rem;
             font-weight: 700;
             margin-bottom: 2.5rem;
             color: #ffffff;
@@ -161,14 +160,14 @@
         }
 
         .stats-title {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #ffffff;
             text-align: center;
-            font-weight: 500;
+            font-weight: 400;
         }
 
         .stats-value {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
             margin-top: 0.25rem;
             color: #ffffff;
@@ -178,7 +177,7 @@
         .stats-percentage {
             font-size: 1rem;
             margin-top: 0.25rem;
-            color: #ff6702;
+            color: #fffb00;
             font-weight: bold;
         }
 
@@ -206,7 +205,7 @@
         }
 
         .data-table {
-            background-color:rgba(18, 145, 130, 0.747);
+            background-color:rgba(100, 175, 166, 0.747);
             border-radius: 1rem;
             box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
         }
@@ -247,10 +246,11 @@
             padding: 1rem;
             color: #ffffff;
             border-bottom: 2px solid #f3f4f6;
+            font-size: 1.25rem;
         }
 
         tr:hover td {
-            background-color: #00050a;
+            background-color: rgb(160, 201, 196);
         }
 
         /* Sidebar Toggle for Mobile */
@@ -478,32 +478,72 @@
                     <span>Gestion Laboral</span>
                 </button>
                 <div class="sub-nav" id="deals-subnav">
+                    <a href="https://aroma-rh.github.io/carts/">
                     <button class="nav-item">
                         <span>NV EMBOUCHE</span>
                     </button>
+                </a>
+                    <a href="https://aroma-rh.github.io/contra20/">
                     <button class="nav-item">
                         <span>CONTRACT</span>
                     </button>
+                </a>
+                    <a href="https://aroma-rh.github.io/rib/">
                     <button class="nav-item">
                         <span>RIB</span>
                     </button>
+                </a>
+                <a href="https://aroma-rh.github.io/HESPATEC/">
+                    <button class="nav-item">
+                        <span>Hispatec Group</span>
+                    </button>
+                </a>
                 </div>
+                <button class="nav-item" id="customers-toggle1">
+                    <i data-lucide="users"></i>
+                    <span>Gestion de Présence</span>
+                </button>
+                <div class="sub-nav" id="customers-subnav1">
+                <a href="https://aroma-rh.github.io/F20POINTAGE/">
+                    <button class="nav-item">
+                        <span>POINTAGE</span>
+                    </button>
+                </a>
+                <a href="https://aroma-rh.github.io/F20GFHFGHGFHGFHHGFH/">
+                    <button class="nav-item">
+                        <span>EFFECTIF</span>
+                    </button>
+                </a>
+                </div>
+                <a href="https://aroma-rh.github.io/LA-ABSE/">
+                    <button class="nav-item">
+                        <i data-lucide="calendar"></i>
+                        <span>La Base</span>
+                    </button>
+                </a>
+                <a href="https://aroma-rh.github.io/contact/">
                 <button class="nav-item">
                     <i data-lucide="calendar"></i>
-                    <span>contact</span>
+                    <span>Contactez-Nous</span>
                 </button>
+            </a>
+            <button class="nav-item" id="customers-toggle2">
+                <i data-lucide="users"></i>
+                <span>Autres options</span>
+            </button>
+            <div class="sub-nav" id="customers-subnav2">
+            
+            <a href="https://aroma-rh.github.io/MINI-BUS/">
                 <button class="nav-item">
-                    <i data-lucide="mail"></i>
-                    <span>Messages</span>
+                    <span>Ajouter Equipe/Tache</span>
                 </button>
+            </a>
+            <a href="https://aroma-rh.github.io/tache-equipe/">
                 <button class="nav-item">
-                    <i data-lucide="bar-chart"></i>
-                    <span>Reports</span>
+                    <span>Effectif mini bus</span>
                 </button>
-                <button class="nav-item">
-                    <i data-lucide="settings"></i>
-                    <span>Settings</span>
-                </button>
+            </a>
+            </div>
             </nav>
         </aside>
 
@@ -646,6 +686,15 @@ document.getElementById('customers-toggle').addEventListener('click', function()
             subNav.style.display = subNav.style.display === 'block' ? 'none' : 'block';
         });
 
+        document.getElementById('customers-toggle1').addEventListener('click', function() {
+            const subNav = document.getElementById('customers-subnav1');
+            subNav.style.display = subNav.style.display === 'block' ? 'none' : 'block';
+        });
+        document.getElementById('customers-toggle2').addEventListener('click', function() {
+            const subNav = document.getElementById('customers-subnav2');
+            subNav.style.display = subNav.style.display === 'block' ? 'none' : 'block';
+        });
+
         document.querySelectorAll('.nav-item').forEach(item => {
             item.addEventListener('click', function() {
                 if (this !== document.getElementById('customers-toggle') && document.getElementById('customers-subnav').style.display === 'block') {
@@ -653,6 +702,12 @@ document.getElementById('customers-toggle').addEventListener('click', function()
                 }
                 if (this !== document.getElementById('deals-toggle') && document.getElementById('deals-subnav').style.display === 'block') {
                     document.getElementById('deals-subnav').style.display = 'none';
+                }
+                if (this !== document.getElementById('customers-toggle1') && document.getElementById('customers-subnav').style.display === 'block') {
+                    document.getElementById('customers-subnav1').style.display = 'none';
+                }
+                if (this !== document.getElementById('customers-toggle2') && document.getElementById('customers-subnav').style.display === 'block') {
+                    document.getElementById('customers-subnav2').style.display = 'none';
                 }
             });
         });
@@ -693,14 +748,15 @@ document.getElementById('customers-toggle').addEventListener('click', function()
         if (row.some(cell => cell && typeof cell === 'string' && cell.trim() !== "")) {
             let tr = document.createElement('tr');
             
-            // التحقق من العمود 7 وتلوين الخلية إذا كانت فارغة
-            if (!row[6] || row[6].trim() === '') {
-                tr.cells[6] && (tr.cells[6].style.backgroundColor = 'yellow');
-            }
+            
+            if (row[6] && row[6].trim().toLowerCase() === 'FACE_40') {
+                 tr.cells[6] && (tr.cells[6].style.backgroundColor = 'yellow');
+               }
 
-            // التحقق من العمود 8 وتلوين السطر باللون الأحمر إذا كانت الخلية غير فارغة
+
+            
             if (row[7] && row[7].trim() !== '') {
-                tr.style.backgroundColor = 'red';
+                tr.style.backgroundColor = 'orange';
             }
 
             row.forEach((cell, index) => {
