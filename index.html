@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>AROMA RH</title>
     
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Reset and base styles */
+        
         * {
             margin: 0;
             padding: 0;
@@ -16,8 +17,8 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, rgb(59, 130, 246), rgb(30, 58, 138)); /* Gradient background */
-            color: #1a355e; /* Light text for better contrast */
+            background: linear-gradient(135deg, rgb(59, 130, 246), rgb(30, 58, 138)); 
+            color: #1a355e; 
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -35,10 +36,10 @@
             padding: 1.5rem;
             box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
-            position: fixed;  /* Fixed position to keep it on the left */
+            position: fixed;  
             top: 0;
             left: 0;
-            height: 100vh;  /* Full height */
+            height: 100vh;  
         }
 
         .sidebar.active {
@@ -56,7 +57,7 @@
         .logo-icon {
             width: 2.5rem;
             height: 2.5rem;
-            color: #3498db; /* Light blue for the logo icon */
+            color: #3498db; 
             transition: transform 0.3s ease;
         }
 
@@ -68,7 +69,7 @@
         }
 
         .sidebar-header:hover .logo-icon {
-            transform: rotate(360deg); /* Subtle logo animation */
+            transform: rotate(360deg); 
         }
 
         .sidebar-nav {
@@ -85,7 +86,7 @@
             padding: 1rem;
             border-radius: 1rem;
             background: none;
-            color: #d1d5db; /* Light gray for inactive items */
+            color: #d1d5db; 
             cursor: pointer;
             font-size: 1rem;
             text-align: left;
@@ -93,12 +94,12 @@
         }
 
         .nav-item:hover {
-            background-color: #3b82f6; /* Blue hover effect */
+            background-color: #3b82f6; 
             color: #fff;
         }
 
         .nav-item.active {
-            background-color: #2563eb; /* Darker blue for active state */
+            background-color: #2563eb; 
             color: #fff;
         }
 
@@ -135,14 +136,14 @@
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
 
         .stats-card {
             background-color: #11223b;
             border-radius: 1rem;
-            padding: 2rem;
+            padding: 1rem;
             box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -187,7 +188,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #3b82f6; /* Blue background for icon */
+            background-color: #3b82f6; 
         }
 
         .stats-icon i {
@@ -262,18 +263,7 @@
             display: none;
         }
 
-        /* Full-Screen Toggle */
-        .fullscreen-toggle {
-            font-size: 2.5rem;
-            background-color: transparent;
-            border: none;
-            color: #1D2837;
-            cursor: pointer;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 999;
-        }
+        
 
         /* Mobile Styles */
         @media (max-width: 768px) {
@@ -290,14 +280,14 @@
             }
 
             .sidebar {
-                transform: translateX(-100%);  /* Hide sidebar initially on mobile */
+                transform: translateX(-100%);  
                 position: fixed;
                 z-index: 999;
                 width: 100%;
             }
 
             .sidebar.active {
-                transform: translateX(0);  /* Show sidebar when active */
+                transform: translateX(0);  
             }
 
             .layout {
@@ -315,7 +305,7 @@
             .nav-item {
                 padding: 1rem 1.25rem;
                 font-size: 1.1rem;
-                margin: 10px;
+                margin: 5px;
             }
 
             .sidebar-header {
@@ -331,12 +321,12 @@
                 width: 100%;
                 height: 100%;
                 background-color: rgba(0, 0, 0, 0.5);
-                z-index: 998;  /* Behind the sidebar but in front of the content */
-                display: none;  /* Initially hidden */
+                z-index: 998;  
+                display: none;  
             }
 
             .overlay.active {
-                display: block;  /* Show the overlay when sidebar is active */
+                display: block; 
             }
         }
 
@@ -359,7 +349,7 @@
     transform: translateX(-100%);
 }
 
-/* Toggle Button */
+
 .toggle-btn {
     position: absolute;
     top: 1rem;
@@ -377,7 +367,7 @@
     background-color: #374151;
 }
 
-/* Sub-nav styling */
+
 .sub-nav {
     display: none;
     padding-left: 20px;
@@ -393,7 +383,7 @@
     background-color: #34495e;
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
     .sidebar {
         transform: translateX(-100%);
@@ -403,6 +393,53 @@
     }
 }
 
+.table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #download-btn  {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        #download-btn:hover {
+            transform: scale(1.1);  /* Slightly enlarge the button on hover */
+            background-color: #45a049; /* Darker green on hover */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #download-btn i {
+            font-size: 24px;
+        }
+
+        #download-btn1  {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+
+        #download-btn1:hover {
+            transform: scale(1.1);  /* Slightly enlarge the button on hover */
+            background-color: #45a049; /* Darker green on hover */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #download-btn1 i {
+            font-size: 24px;
+        }
     </style>
 </head>
 <body>
@@ -445,7 +482,7 @@
                         <span>RIB</span>
                     </button>
                 </div>
-                '<button class="nav-item">
+                <button class="nav-item">
                     <i data-lucide="calendar"></i>
                     <span>La base</span>
                 </button>
@@ -505,7 +542,16 @@
                         </div>
                         <div class="stats-value" id="totalEquipe">0</div>
                     </div>
+                    <div class="stats-card">
+                        <div class="stats-header">
+                            <span class="stats-title">Total tache</span>
+                        </div>
+                        <div class="stats-value" id="totaltache">0</div>
+                    </div>
                 </div>
+
+                
+            
                 
                     
                 
@@ -514,7 +560,13 @@
                     <div class="data-table">
                         <div class="table-header">
                             <h2>SUIVI DE EFFECTIF</h2>
+                            <button id="download-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
                         </div>
+                        
+                        
+
                         <div class="table-container">
                             <table border="1">
                                 <thead>
@@ -528,17 +580,20 @@
                                     </tr>
                                 </thead>
                                 <tbody id="table-body2">
-                                    <!-- سيتم إدراج البيانات هنا -->
+                                    <!-- table effectif-->
                                 </tbody>
                             </table>
                             
                         </div>
                     </div>
           
-
+          
                     <div class="data-table">
                         <div class="table-header">
-                            <h2>SUIVI DE POINTAGE</h2>
+                        <h2>SUIVI DE PONTAGE</h2>
+                            <button id="download-btn1">
+                                <i class="fas fa-download"></i>
+                            </button>
                         </div>
                         <div class="table-container">
                             <table border="1">
@@ -555,7 +610,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="table-body">
-                                    <!-- سيتم إدراج البيانات هنا -->
+                                    <!--ا table poinatge-->
                                 </tbody>
                             </table>
                             
@@ -568,31 +623,9 @@
 
     <!-- Overlay for mobile sidebar -->
     <div class="overlay" onclick="toggleSidebar()"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 
     <script>
-
-document.getElementById('customers-toggle').addEventListener('click', function() {
-            const subNav = document.getElementById('customers-subnav');
-            subNav.style.display = subNav.style.display === 'block' ? 'none' : 'block';
-        });
-
-        document.getElementById('deals-toggle').addEventListener('click', function() {
-            const subNav = document.getElementById('deals-subnav');
-            subNav.style.display = subNav.style.display === 'block' ? 'none' : 'block';
-        });
-
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', function() {
-                if (this !== document.getElementById('customers-toggle') && document.getElementById('customers-subnav').style.display === 'block') {
-                    document.getElementById('customers-subnav').style.display = 'none';
-                }
-                if (this !== document.getElementById('deals-toggle') && document.getElementById('deals-subnav').style.display === 'block') {
-                    document.getElementById('deals-subnav').style.display = 'none';
-                }
-            });
-        });
-
-
 
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
@@ -612,118 +645,165 @@ document.getElementById('customers-toggle').addEventListener('click', function()
     const missingContractElement = document.getElementById('missingContract');
     const nonEmptyColumn7Element = document.getElementById('nonEmptyColumn7');
     const totalEquipeElement = document.getElementById('totalEquipe');
-
     const missingContractPercentageElement = document.getElementById('missingContractPercentage');
     const nonContractPercentageElement = document.getElementById('nonContractPercentage');
 
-    tableBody.innerHTML = ''; // تفريغ البيانات القديمة
+    tableBody.innerHTML = ''; 
     let employeeCount = 0;
     let totalHours = 0;
     let missingContractCount = 0;
     let nonEmptyColumn7Count = 0;
     let uniqueGroups = new Set();
 
-    // تصفية البيانات بحيث يتم عرض فقط الصفوف التي تحتوي على "FINCA 20" في العمود السادس
-    const filteredData = data.filter(row => row[5] === 'FINCA 20');
+    const filteredData = data.filter(row => row[5] === 'FINCA 20'); 
 
-    // عرض البيانات المصفاة
     filteredData.forEach(row => {
         if (row.some(cell => cell && typeof cell === 'string' && cell.trim() !== "")) {
             let tr = document.createElement('tr');
-            row.forEach(cell => {
+            row.forEach((cell, index) => {
                 let td = document.createElement('td');
-                td.textContent = cell;
+ 
+                if (index === 4 && cell) {
+                    td.textContent = formatDate(cell); 
+                } else {
+                    td.textContent = cell || '-'; 
+                }
+                
                 tr.appendChild(td);
             });
             tableBody.appendChild(tr);
             employeeCount++;
 
-            // حساب إجمالي الساعات (العمود 4)
             const value = parseFloat(row[3]);
             if (!isNaN(value)) {
                 totalHours += value;
             }
 
-            // حساب العقود الناقصة (العمود 7)
             if (row[6] && row[6].trim() !== '') {
                 missingContractCount++;
             }
 
-            // حساب عدد الصفوف غير الفارغة في العمود 8
             if (row[7] && row[7].trim() !== '') {
                 nonEmptyColumn7Count++;
             }
 
-            // جمع أسماء الفرق الفريدة (العمود 3)
             if (row[2] && row[2].trim() !== "") {
                 uniqueGroups.add(row[2]);
             }
         }
     });
 
-    // تحديث القيم في واجهة المستخدم
     totalEmployeesElement.textContent = employeeCount;
     totalHoursElement.textContent = totalHours;
     missingContractElement.textContent = missingContractCount;
     nonEmptyColumn7Element.textContent = nonEmptyColumn7Count;
     totalEquipeElement.textContent = uniqueGroups.size;
 
-    // حساب النسب المئوية
-    let missingContractPercentage = totalHours > 0 ? ((missingContractCount / employeeCount) * 100).toFixed(2) + "%" : "0%";
-    let nonContractPercentage = totalHours > 0 ? ((nonEmptyColumn7Count / employeeCount) * 100).toFixed(2) + "%" : "0%";
+    let missingContractPercentage = employeeCount > 0 ? ((missingContractCount / employeeCount) * 100).toFixed(2) + "%" : "0%";
+    let nonContractPercentage = employeeCount > 0 ? ((nonEmptyColumn7Count / employeeCount) * 100).toFixed(2) + "%" : "0%";
 
-    // تحديث النسب المئوية في الواجهة
     missingContractPercentageElement.textContent = missingContractPercentage;
     nonContractPercentageElement.textContent = nonContractPercentage;
+
+    document.getElementById('download-btn1').addEventListener('click', function() {
+        downloadTableAsXLSX1(filteredData);
+    });
 }
 
-// دالة لجلب البيانات من Google Apps Script
 
-
-
-
-// دالة لجلب البيانات من Google Apps Script
 function fetchData() {
     fetch('https://script.google.com/macros/s/AKfycbw_pOBzwUWz2xBpZna2xHj8u869tADNLflrMlEpfmANumAq0XCo8IS35n40AnsGTakw/exec') // استبدل بـ URL السكربت
-        .then(response => response.json()) // تحويل الاستجابة إلى JSON
-        .then(data => displayData(data)) // تمرير البيانات إلى دالة العرض
+        .then(response => response.json()) 
+        .then(data => displayData(data)) 
         .catch(error => console.error('Error:', error));
 }
 
 function fetchData1() {
     fetch('https://script.googleusercontent.com/macros/echo?user_content_key=UD8heN6nFEyDz2PmHw3KaNYzvICjLrXBioaszkrmooiJx76NviHQ1IN3Vo3EY6LIuziYtlsukBfKz8e-xgTlEGtvXiXqAboZm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnM3Kri0XU2oA2Erb822H2YC_cn4PAgp4fTVvyhe9Kb_t1HNO98jGF18scWCFF4--xTcVoiZTVhwsrCA5O_Vi88x6QINgmi3zTA&lib=MY2tE_tyfTs-TzsLCAe0qlZwla2VcZTf1') // Replace with your Apps Script URL
-        .then(response => response.json()) // Convert response to JSON
-        .then(data1 => displayData1(data1)) // Call displayData1 to handle the data
+        .then(response => response.json()) 
+        .then(data1 => displayData1(data1)) 
         .catch(error => console.error('Error:', error));
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); 
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
 }
 
 function displayData1(data) {
     const tableBody = document.getElementById('table-body2');
-    tableBody.innerHTML = ''; // Clear the table before adding new data
+    const totaltacheElement = document.getElementById('totaltache');
+    tableBody.innerHTML = ''; 
+    let uniquetache = new Set();
+    
+    const filteredData = data.slice(1).filter(row => row[1] === 'FINCA 20');  
 
-    // Filter data where Column 6 (FINCA) is "FINCA 20"
-    const filteredData = data.slice(1).filter(row => row[1] === 'FINCA 20');  // Assuming "FINCA" is in Column 6 (index 5)
-
-    // Process and display the filtered rows
     filteredData.forEach(row => {
-        // Only process non-empty rows
         if (row.some(cell => cell && typeof cell === 'string' && cell.trim() !== "")) {
             let tr = document.createElement('tr');
-            row.forEach(cell => {
+            row.forEach((cell, index) => {
                 let td = document.createElement('td');
-                td.textContent = cell || '-'; // Default to '-' if the cell is empty
+
+                if (index === 2 && cell) {
+                    td.textContent = formatDate(cell); 
+                } else {
+                    td.textContent = cell || '-'; 
+                }
+                
                 tr.appendChild(td);
             });
             tableBody.appendChild(tr);
+
+            if (row[3] && row[3].trim() !== "") {
+                uniquetache.add(row[3]);
+            }
         }
-        
+    });
+
+    totaltacheElement.textContent = uniquetache.size;
+
+    document.getElementById('download-btn').addEventListener('click', function() {
+        downloadTableAsXLSX(filteredData);
     });
 }
 
+  
+
+function downloadTableAsXLSX(data) {
+    
+    const headers = ['EQUIPE', 'FINCA', 'DATE', 'TAREA', 'EFFECTIF'];
+
+   
+    const filteredData = data.slice(1).map(row => row.slice(0, 5)); 
+    const dataWithHeaders = [headers, ...filteredData];
+    const ws = XLSX.utils.aoa_to_sheet(dataWithHeaders);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+    XLSX.writeFile(wb, "EFFECTIF.xlsx");
+}
+
+function downloadTableAsXLSX1(data) {
+
+    const headers = ['ID', 'NOME', 'EQUIPE', 'RHH', 'DATE', 'FINCA'];
+    const filteredData = data.slice(1).map(row => row.slice(0, 6));
+    const dataWithHeaders = [headers, ...filteredData];
+    const ws = XLSX.utils.aoa_to_sheet(dataWithHeaders);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+    XLSX.writeFile(wb, "POINTAGE.xlsx");
+}
+
+
+
+
 
 window.addEventListener("load", () => {
-    fetchData(); // Fetch data for the first table
-    fetchData1(); // Fetch data for the second table
+    fetchData(); 
+    fetchData1(); 
 });
 
 
