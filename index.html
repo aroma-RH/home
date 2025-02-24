@@ -18,7 +18,7 @@
         body {
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(135deg, rgb(59, 130, 246), rgb(30, 58, 138)); 
-            color: #1a355e; 
+            color: #ffffff; 
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -32,7 +32,7 @@
         /* Sidebar */
         .sidebar {
             width: 256px;
-            background-color: #1f2937;
+            background-color: rgb(0, 121, 107);
             padding: 1.5rem;
             box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
@@ -94,12 +94,12 @@
         }
 
         .nav-item:hover {
-            background-color: #3b82f6; 
+            background-color: rgb(0, 121, 107); 
             color: #fff;
         }
 
         .nav-item.active {
-            background-color: #2563eb; 
+            background-color: rgb(3, 212, 188); 
             color: #fff;
         }
 
@@ -112,7 +112,7 @@
         .main-content {
             flex: 1;
             padding: 10px;
-            background-color: #3a4d77; /* Light background for the main content */
+            background-color: #ffffff; /* Light background for the main content */
             box-shadow: inset 0px 0px 12px rgba(0, 0, 0, 0.1);
             border-radius: 1rem;
             margin-left: 260px; /* Ensure main content is pushed to the right */
@@ -141,7 +141,7 @@
         }
 
         .stats-card {
-            background-color: #11223b;
+            background-color: rgb(0, 121, 107);
             border-radius: 1rem;
             padding: 1rem;
             box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -206,14 +206,14 @@
         }
 
         .data-table {
-            background-color:#004b7c;
+            background-color:rgba(18, 145, 130, 0.747);
             border-radius: 1rem;
             box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
         }
 
         .table-header {
             padding: 1.5rem;
-            border-bottom: 2px solid #6d9eff;
+            border-bottom: 2px solid rgb(1, 70, 62);
             text-align: center;
         }
 
@@ -240,7 +240,7 @@
             font-weight: 600;
             text-transform: uppercase;
             color: #ffffff;
-            background-color: #5081e2;
+            background-color: rgb(2, 66, 59);
         }
 
         td {
@@ -258,7 +258,7 @@
             font-size: 2.5rem;
             background-color: transparent;
             border: none;
-            color: #1D2837;
+            color: rgb(0, 121, 107);
             cursor: pointer;
             display: none;
         }
@@ -333,7 +333,7 @@
         /* Sidebar Styling */
 .sidebar {
     width: 256px;
-    background-color: #1f2937;
+    background-color: rgb(2, 66, 59);
     padding: 1.5rem;
     box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
@@ -382,7 +382,7 @@
 }
 
 .sub-nav .nav-item:hover {
-    background-color: #34495e;
+    background-color: rgb(8, 167, 148);
 }
 
 
@@ -459,7 +459,7 @@
                 </button>
                 <button class="nav-item" id="customers-toggle">
                     <i data-lucide="users"></i>
-                    <span>CONROLE DE PRESENCE</span>
+                    <span>Controle de Présence</span>
                 </button>
                 <div class="sub-nav" id="customers-subnav">
                 <a href="https://aroma-rh.github.io/POINTAGE-F20/">
@@ -475,7 +475,7 @@
                 </div>
                 <button class="nav-item" id="deals-toggle">
                     <i data-lucide="dollar-sign"></i>
-                    <span>LABOURAL</span>
+                    <span>Gestion Laboral</span>
                 </button>
                 <div class="sub-nav" id="deals-subnav">
                     <button class="nav-item">
@@ -490,7 +490,7 @@
                 </div>
                 <button class="nav-item">
                     <i data-lucide="calendar"></i>
-                    <span>Calendar</span>
+                    <span>contact</span>
                 </button>
                 <button class="nav-item">
                     <i data-lucide="mail"></i>
@@ -517,21 +517,21 @@
                 <div class="stats-grid">
                     <div class="stats-card">
                         <div class="stats-header">
-                            <span class="stats-title">Total Employees</span>
+                            <span class="stats-title">Total des travailleurs</span>
                         </div>
                         <div class="stats-value" id="totalEmployees">0</div>
                     </div>
                     
                     <div class="stats-card">
                         <div class="stats-header">
-                            <span class="stats-title">Total Hours</span>
+                            <span class="stats-title">Total Heures</span>
                         </div>
                         <div class="stats-value" id="totalHours">0</div>
                     </div>
                     
                     <div class="stats-card">
                         <div class="stats-header">
-                            <span class="stats-title">Pointe</span>
+                            <span class="stats-title">Marquer la présence</span>
                         </div>
                         <div class="stats-value" id="missingContract">0</div>
                         <div class="stats-percentage" id="missingContractPercentage">0%</div>
@@ -539,7 +539,7 @@
                     
                     <div class="stats-card">
                         <div class="stats-header">
-                            <span class="stats-title">Non contract</span>
+                            <span class="stats-title">Manque de Contrat</span>
                         </div>
                         <div class="stats-value" id="nonEmptyColumn7">0</div>
                         <div class="stats-percentage" id="nonContractPercentage">0%</div>
@@ -548,13 +548,13 @@
                 
                     <div class="stats-card">
                         <div class="stats-header">
-                            <span class="stats-title">Total Equipe</span>
+                            <span class="stats-title">Total Equipes</span>
                         </div>
                         <div class="stats-value" id="totalEquipe">0</div>
                     </div>
                     <div class="stats-card">
                         <div class="stats-header">
-                            <span class="stats-title">Total tache</span>
+                            <span class="stats-title">Total taches</span>
                         </div>
                         <div class="stats-value" id="totaltache">0</div>
                     </div>
@@ -692,6 +692,17 @@ document.getElementById('customers-toggle').addEventListener('click', function()
     filteredData.forEach(row => {
         if (row.some(cell => cell && typeof cell === 'string' && cell.trim() !== "")) {
             let tr = document.createElement('tr');
+            
+            // التحقق من العمود 7 وتلوين الخلية إذا كانت فارغة
+            if (!row[6] || row[6].trim() === '') {
+                tr.cells[6] && (tr.cells[6].style.backgroundColor = 'yellow');
+            }
+
+            // التحقق من العمود 8 وتلوين السطر باللون الأحمر إذا كانت الخلية غير فارغة
+            if (row[7] && row[7].trim() !== '') {
+                tr.style.backgroundColor = 'red';
+            }
+
             row.forEach((cell, index) => {
                 let td = document.createElement('td');
  
@@ -741,6 +752,7 @@ document.getElementById('customers-toggle').addEventListener('click', function()
         downloadTableAsXLSX1(filteredData);
     });
 }
+
 
 
 function fetchData() {
