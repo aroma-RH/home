@@ -863,7 +863,7 @@ function displayData1(data) {
     tableBody.innerHTML = ''; 
     let uniquetache = new Set();
     
-    const filteredData = data.slice(1).filter(row => row[2] === 'FINCA 20');  
+    const filteredData = data.slice(1).filter(row => row[1] === 'FINCA 20');  
 
     filteredData.forEach(row => {
         if (row.some(cell => cell && typeof cell === 'string' && cell.trim() !== "")) {
