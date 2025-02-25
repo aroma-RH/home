@@ -871,7 +871,7 @@ function displayData1(data) {
             row.forEach((cell, index) => {
                 let td = document.createElement('td');
 
-                if (index === 0 && cell) {
+                if (index === 2 && cell) {
                     td.textContent = formatDate(cell); 
                 } else {
                     td.textContent = cell || '-'; 
