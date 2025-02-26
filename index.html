@@ -772,13 +772,10 @@ document.getElementById('customers-toggle').addEventListener('click', function()
         if (row.some(cell => cell && typeof cell === 'string' && cell.trim() !== "")) {
             let tr = document.createElement('tr');
             
-            
             if (row[6] && row[6].trim().toLowerCase() === 'FACE_40') {
-                 tr.cells[6] && (tr.cells[6].style.backgroundColor = 'yellow');
-               }
+                tr.cells[6] && (tr.cells[6].style.backgroundColor = 'yellow');
+            }
 
-
-            
             if (row[7] && row[7].trim() !== '') {
                 tr.style.backgroundColor = 'orange';
             }
@@ -792,6 +789,45 @@ document.getElementById('customers-toggle').addEventListener('click', function()
                     td.textContent = cell || '-'; 
                 }
                 
+            
+                if (index === 7 && cell && cell.trim() === 'NON') {
+    let button = document.createElement('button');
+    button.textContent = '?';
+
+    // Apply advanced styling
+    button.style.marginLeft = '10px';
+    button.style.cursor = 'pointer';
+    button.style.width = '30px';
+    button.style.height = '30px';
+    button.style.borderRadius = '50%';
+    button.style.border = 'none';
+    button.style.backgroundColor = '#FF5733'; 
+    button.style.color = 'white';
+    button.style.fontSize = '16px';
+    button.style.fontWeight = 'bold';
+    button.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+    button.style.transition = 'all 0.3s ease';
+
+    button.addEventListener('mouseenter', () => {
+        button.style.backgroundColor = '#C70039'; 
+        button.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.15)';
+    });
+
+    button.addEventListener('mouseleave', () => {
+        button.style.backgroundColor = '#FF5733';
+        button.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+    });
+
+   
+    button.addEventListener('click', function() {
+        fetchCommentFromGoogleSheets(row[0], td);
+    });
+
+   
+    td.appendChild(button);
+}
+
+
                 tr.appendChild(td);
             });
             tableBody.appendChild(tr);
@@ -832,6 +868,66 @@ document.getElementById('customers-toggle').addEventListener('click', function()
         downloadTableAsXLSX1(filteredData);
     });
 }
+
+function fetchCommentFromGoogleSheets(employeeId, td) {
+    var url = 'https://script.google.com/macros/s/AKfycbxSP9sLqt741vpVa4oasL-0vHWU_iY6bP8z6YAkwY109SghnXZq4S0KgoM8fXMBe8tilA/exec?employeeId=' + employeeId;
+
+    fetch(url)
+        .then(response => response.json())  
+        .then(data => {
+            if (data && data.comment) {
+                
+                let existingNote = td.querySelector('.employee-note');
+
+                if (existingNote) {
+                    
+                    existingNote.remove();
+                } else {
+                    
+                    let note = document.createElement('div');
+                    note.classList.add('employee-note');  
+                    note.textContent =data.comment;
+
+                    
+                    note.style.fontStyle = 'italic';
+                    note.style.fontSize = '14px';
+                    note.style.color = 'rgb(255 255 255)';
+                    note.style.backgroundColor = 'rgb(0 0 0)'; 
+                    note.style.padding = '8px';
+                    note.style.borderRadius = '5px';
+                    note.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+                    note.style.marginTop = '8px';
+                    note.style.border = '2px solid rgb(195 176 176)';
+                    note.style.transition = 'all 0.3s ease';
+                    note.style.maxWidth = '300px'; 
+                    note.style.wordWrap = 'break-word'; 
+                    note.addEventListener('mouseenter', function() {
+                        note.style.transform = 'scale(1.05)';
+                        note.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.2)';
+                    });
+
+                    note.addEventListener('mouseleave', function() {
+                        note.style.transform = 'scale(1)';
+                        note.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+                    });
+
+                    
+                    td.appendChild(note);
+                }
+            } else {
+                alert('Aucun');
+            }
+        })
+        .catch(error => {
+            console.error('erreur. ', error);
+            alert('errour');
+        });
+}
+
+
+
+
+
 
 
 
