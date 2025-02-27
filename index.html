@@ -997,7 +997,7 @@ function downloadTableAsXLSX(data) {
     const headers = ['EQUIPE', 'FINCA', 'DATE', 'TAREA', 'EFFECTIF'];
 
    
-    const filteredData = data.slice(1).map(row => row.slice(0, 5)); 
+    const filteredData = data.slice(0).map(row => row.slice(0, 5)); 
     const dataWithHeaders = [headers, ...filteredData];
     const ws = XLSX.utils.aoa_to_sheet(dataWithHeaders);
     const wb = XLSX.utils.book_new();
@@ -1005,17 +1005,27 @@ function downloadTableAsXLSX(data) {
     XLSX.writeFile(wb, "EFFECTIF.xlsx");
 }
 
-function downloadTableAsXLSX1(data) {
+function downloadTableAsXLSX1(data, fileName = "POINTAGE.xlsx") {
+    if (!data || data.length < 2) {
+        console.error("No valid data to export.");
+        return;
+    }
 
-    const headers = ['ID', 'NOME', 'EQUIPE', 'RHH', 'DATE', 'FINCA'];
-    const filteredData = data.slice(1).map(row => row.slice(0, 6));
-    const dataWithHeaders = [headers, ...filteredData];
-    const ws = XLSX.utils.aoa_to_sheet(dataWithHeaders);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+    try {
+        const headers = ['ID', 'NOME', 'EQUIPE', 'RHH', 'DATE', 'FINCA'];
+        const filteredData = data.slice(0).map(row => row.slice(0, 6));
+        const dataWithHeaders = [headers, ...filteredData];
 
-    XLSX.writeFile(wb, "POINTAGE.xlsx");
+        const ws = XLSX.utils.aoa_to_sheet(dataWithHeaders);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+
+        XLSX.writeFile(wb, fileName);
+    } catch (error) {
+        console.error("Error generating XLSX file:", error);
+    }
 }
+
 
 
 
